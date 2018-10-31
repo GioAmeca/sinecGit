@@ -1,0 +1,187 @@
+/* @css codigo para presentar la caja de login*/
+#icon-login{
+	position: absolute;
+	left: 33%;
+	top: -20%;
+	color: #3c8dbc;
+}
+.login-text{
+	font-family: 'Source Sans Pro', sans-serif;
+}
+#icon-login:hover{
+		-ms-transform: scale(1.2, 1.2); /* IE 9 */
+    -webkit-transform: scale(1.2, 1.2); /* Safari */
+    transform: scale(1.2, 1.2);
+    color: #54b948;
+}
+.login-text:hover{
+	color: #005596;
+	-ms-transform: scale(1.1, 1.1); /* IE 9 */
+    -webkit-transform: scale(1.1, 1.1); /* Safari */
+    transform: scale(1.1, 1.1);
+}
+/*@css codigo para presentar la barra de navegacion horizontal y vertical*/
+.Menu{
+ 	font-family: 'Source Sans Pro', sans-serif;
+ }
+.Etiqueta-Menu{
+	font-family: 'Source Sans Pro', sans-serif;
+    font-size: 20px;
+	color: #fff;
+}
+
+.Etiqueta-Menu:hover{
+    font-size: 22px;
+	color: #fff;
+}
+.Logo-Blanco:hover{
+		-ms-transform: scale(1.1, 1.1); /* IE 9 */
+    -webkit-transform: scale(1.1, 1.1); /* Safari */
+    transform: scale(1.1, 1.1);
+}
+
+#cheMenu{
+	display: none;
+}
+.ContenedorMenu{
+	position: fixed;
+	z-index: 2;
+	height: 100%;
+	width:60px;
+	background-color:#3c8dbc;
+	
+}
+
+.ContenedorMenu:hover{
+	height: 100%;
+	width:70px;
+	background-color: #3c8dbc;
+	transition: all 500ms cubic-bezier(1,0,0,1);
+    transition-timing-function: cubic-bezier(1,0,0,1);
+}
+
+#cheMenu:checked ~ .ContenedorMenu{
+	-webkit-box-shadow: 12px 11px 20px -3px rgba(0,0,0,0.75);
+-moz-box-shadow: 12px 11px 20px -3px rgba(0,0,0,0.75);
+box-shadow: 12px 11px 20px -3px rgba(0,0,0,0.75);
+	background-color: #3c8dbc;     
+	width:200px;
+    top: 0px;
+    transition: all 200ms cubic-bezier(1,0,0,1);
+    transition-timing-function: cubic-bezier(1,0,0,1);   
+}
+.Lista{
+
+  list-style-type: none;
+  position: relative;
+ top:20px;
+}
+#cheMenu:checked ~ .ContenedorMenu .menuCorto{
+color: #fff;
+	transition: all 250ms cubic-bezier(1,0,0,1);
+    transition-timing-function: cubic-bezier(1,0,0,1);
+}
+
+.menuCorto{
+	color: #fff;
+	position: relative;
+	right: 10px
+}
+.menuCorto:hover{
+	color: #fff;
+   	-ms-transform: scale(1.1, 1.1); /* IE 9 */
+    -webkit-transform: scale(1.1, 1.1); /* Safari */
+    transform: scale(1.1, 1.1);
+    
+}
+.menuLargo{
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 2px;
+   position: absolute;
+	display: none;
+}
+#cheMenu:checked ~ .ContenedorMenu .menuLargo{
+	font-size: 16px;
+	display: inline;
+    transition: all 250ms cubic-bezier(1,0,0,1);
+    transition-timing-function: cubic-bezier(1,0,0,1);
+}
+/*@css codigo para presentar el contenido de la tablas de acciones*/
+.bodysito{
+	background-color: #fff;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #000;
+	border-style: solid;
+	border-width: 4px;
+	border-color: #fff;
+	border-radius: 6px;
+	position:relative;
+	z-index: 1;
+	left:7%;
+	top: 25px;
+	max-width: 90%;
+	max-height: 500px;
+	overflow-x: auto;
+	-webkit-box-shadow: 4px 5px 28px 6px rgba(0,0,0,0.38);
+-moz-box-shadow: 4px 5px 28px 6px rgba(0,0,0,0.38);
+box-shadow: 4px 5px 28px 6px rgba(0,0,0,0.38);
+
+}
+.bodysito:hover{
+     	-webkit-box-shadow: 12px 11px 20px -3px rgba(0,0,0,0.75);
+-moz-box-shadow: 12px 11px 20px -3px rgba(0,0,0,0.75);
+box-shadow: 12px 11px 20px -3px rgba(0,0,0,0.75);
+    transition: all 350ms cubic-bezier(1,0,0,1);
+    transition-timing-function: cubic-bezier(1,0,0,1);
+}
+.bodysito1{
+	background-color: #fff;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #000;
+	border-style: solid;
+	border-width: 4px;
+	border-color: #fff;
+	border-radius: 6px;
+	position:relative;
+	z-index: 1;
+	left:7%;
+	top: 25px;
+	max-width: 90%;
+	max-height: 500px;
+	overflow-x: auto;
+}
+/*.
+.bodysitoR{
+		color: #000;
+	border-style: solid;
+	border-width: 2px;
+	border-color: rgb(00,85,150);
+	border-radius: 6px;
+
+	
+	
+
+}
+
+ Filas3{background-color: #20A824;
+ 	color: #000; 
+ 	border-style: 1px; border-radius:5px;  }
+ .Filas2{background-color: #E8200C;
+ 	color: #000; 
+ 	border-style: 1px; border-radius:5px;  }
+ .Filas1{background-color: #0476B0;
+ 	color: #000; 
+ 	border-style: 1px; border-radius:5px;  }
+*/
+ .Filas:hover{   	
+
+ 	background-color: #fafafa;
+ 	-ms-transform: scale(1.001, 1.001); /* IE 9 */
+    -webkit-transform: scale(1.001, 1.001); /* Safari */
+    transform: scale(1.001, 1.001);
+
+ }
+
+.menuData{
+	
+}
