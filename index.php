@@ -53,11 +53,11 @@
                 <label for="user" class="login-text">Usuario:</label><br>
         
                 
-                <input type="Text" name="user" id="user" placeholder="Nomina" size="25" autofocus> <br>
+                <input type="Text" name="user" id="user" placeholder="Nomina" size="25" autofocus required> <br>
                 
                 <label for="pass" class="login-text">Contraseña:</label> <br>
                
-                <input type="password" name="pass" id="pass" placeholder="Password" size="25" ><br><br>
+                <input type="password" name="pass" id="pass" placeholder="Password" size="25" required><br><br>
                 
                 <button type="submit" class="btn btn-primary">Entrar</button>&nbsp;&nbsp;&nbsp;
 
@@ -77,14 +77,14 @@
         </div>
         <div class="uk-modal-body">
               
-              <form action="construccion.php">  
-                  <label for="Nomina" class="login-text">Nomina: &nbsp;&nbsp;</label>
-                  <input type="Text" name="Nomina" id="Nomina" placeholder="Numero de nomina/usuario"><br>
-                  <label for="Nombre" class="login-text" >Nombre: &nbsp;</label>
-                  <input type="Text" name="Nombre" id="Nombre" placeholder="Solo un nombre">
+              <form action="Back/php/VerificarUser.php" method="POST">  
+                  <label for="Nomina" class="login-text">Nomina:</label>
+                  <input type="Text" name="Nomina" id="Nomina" placeholder="Numero de nomina/usuario" style="position: absolute; left: 110px; " required><br>
+                  <label for="Nombre" class="login-text" >Password:</label>
+                  <input type="Text" name="Nombre" id="Nombre" placeholder="Solo un nombre" style="position: absolute; left: 110px; " required>
 <div class="uk-modal-footer uk-text-right">
             <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-            <button class="uk-button uk-button-primary" type="button">Save</button>
+            <button class="uk-button uk-button-primary" type="submit">Save</button>
         </div>
               </form>
         </div>
