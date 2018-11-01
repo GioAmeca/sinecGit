@@ -24,7 +24,7 @@ print '
                <div uk-dropdown>
                   <ul class="uk-nav uk-dropdown-nav">
                       <li class="uk-active">
-                         <a href="../../Back/php/CSESSION.php">Disable</a>
+                         <a href="../../Back/php/seguridad/CSESSION.php">Disable</a>
                       </li>
                   </ul>
                </div>                       

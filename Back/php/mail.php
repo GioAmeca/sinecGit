@@ -1,20 +1,20 @@
 
 <?php
-include_once('Rapido.php');
+include_once('Consulta/Rapido.php');
 
 
-function NewActionMail($action,$open,$Due,$resposable,$Qopen,$Qclose,$comentari,$cone){
+function NewActionMail($action,$open,$Due,$resposable,$Qopen,$Qclose,$comentari,$conexion){
  //treamos los correos de los usuarios
  // Varios destinatarios
- $para ="".correoUser($cone,$resposable);
- $para.=",".correoUser($cone,$Qopen);
- $para.=",".correoUser($cone,$Qclose);
+ $para ="".correoUser($conexion,$resposable);
+ $para.=",".correoUser($conexion,$Qopen);
+ $para.=",".correoUser($conexion,$Qclose);
  // título
  $título = 'SINEC New Action Open';
  // nos traemos los datos de los involucrados en la accion 
- $res=whoCon($cone,$resposable);
- $Qo=whoCon($cone,$Qopen);
- $Qc=whoCon($cone,$Qclose);
+ $res=whoCon($conexion,$resposable);
+ $Qo=whoCon($conexion,$Qopen);
+ $Qc=whoCon($conexion,$Qclose);
  // mensaje
  $mensaje = '
   <html>
@@ -50,21 +50,21 @@ function NewActionMail($action,$open,$Due,$resposable,$Qopen,$Qclose,$comentari,
  $cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
  // Enviarlo
  mail($para,$título,$mensaje,$cabeceras);
- //print($para. $título. $mensaje. $cabeceras);	
+// print($para. $título. $mensaje. $cabeceras);	
 }
 
-function CloseActionMail($action,$open,$Due,$resposable,$Qopen,$Qclose,$comentari,$cone){
+function CloseActionMail($action,$open,$Due,$resposable,$Qopen,$Qclose,$comentari,$conexion){
  //treamos los correos de los usuarios
  // Varios destinatarios
- $para ="".correoUser($cone,$resposable);
- $para.=",".correoUser($cone,$Qopen);
- $para.=",".correoUser($cone,$Qclose);
+ $para ="".correoUser($conexion,$resposable);
+ $para.=",".correoUser($conexion,$Qopen);
+ $para.=",".correoUser($conexion,$Qclose);
  // título
  $título = 'SINEC Closed Action';
  // nos traemos los datos de los involucrados en la accion 
- $res=whoCon($cone,$resposable);
- $Qo=whoCon($cone,$Qopen);
- $Qc=whoCon($cone,$Qclose);
+ $res=whoCon($conexion,$resposable);
+ $Qo=whoCon($conexion,$Qopen);
+ $Qc=whoCon($conexion,$Qclose);
  // mensaje
  $mensaje = '
  <html>
@@ -103,18 +103,18 @@ function CloseActionMail($action,$open,$Due,$resposable,$Qopen,$Qclose,$comentar
  //print($para. $título. $mensaje. $cabeceras);	
 }
 //funcion que manda una notificacion a un correo que no esta involuclado con la accion
-function NotificacionAdd($action,$open,$Due,$resposable,$Qopen,$Qclose,$comentari,$cone){
+function NotificacionAdd($action,$open,$Due,$resposable,$Qopen,$Qclose,$comentari,$conexion){
  //treamos los correos de los usuarios
  // Varios destinatarios
- $para ="".correoUser($cone,$resposable);
- $para.=",".correoUser($cone,$Qopen);
- $para.=",".correoUser($cone,$Qclose);
+ $para ="".correoUser($conexion,$resposable);
+ $para.=",".correoUser($conexion,$Qopen);
+ $para.=",".correoUser($conexion,$Qclose);
  // título
  $título = 'SINEC New Action Open';
  // nos traemos los datos de los involucrados en la accion 
- $res=whoCon($cone,$resposable);
- $Qo=whoCon($cone,$Qopen);
- $Qc=whoCon($cone,$Qclose);
+ $res=whoCon($conexion,$resposable);
+ $Qo=whoCon($conexion,$Qopen);
+ $Qc=whoCon($conexion,$Qclose);
  // mensaje
  $mensaje = '
   <html>

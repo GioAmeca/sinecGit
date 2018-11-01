@@ -1,7 +1,7 @@
 <?php
 $pass=$_POST['pass'];
 $user=$_POST['user'];
-require_once "Conexion.php";
+require_once "../Conexion.php";
 $nomina='GeovannyIgnacioSalazarMedina05abril1995';
 try {
 	$sql='SELECT * FROM produccion.usuario where NumeroNomina= "'.$user.'" and Contrasena="'.$pass.'";';
@@ -16,7 +16,7 @@ foreach ($resultado as $key ) {
 	$contrasenia=$key[2];
 	}
 } catch (Exception $e) {
-	header('Location:../../index.php');
+	header('Location:../../../index.php');
 }
 
 
@@ -27,9 +27,11 @@ if ($user==$nomina and $pass==$contrasenia) {
 	$_SESSION['nomina']=$nomina;
 	$_SESSION['nombre']=$nombre;
 	$_SESSION['Apellido']=$apellido;
-	header('Location:../../Front/Data.php');
+	
+	header('Location:../../../Front/Data.php');
 }else{
-	header('Location:../../index.php');
+
+	header('Location:../../../index.php');
 }
 
 

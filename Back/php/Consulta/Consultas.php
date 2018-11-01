@@ -55,6 +55,7 @@
       }
   }
   return ($setencia);
+  
  }
 
  function ConsultaUnAccion($conexion){
@@ -70,6 +71,7 @@
  	}
  	
          return $setencia1; 
+
   }     
 
  ?>

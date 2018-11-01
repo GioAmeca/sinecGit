@@ -20,6 +20,13 @@
     -webkit-transform: scale(1.1, 1.1); /* Safari */
     transform: scale(1.1, 1.1);
 }
+/*@css codigo para mostrar los input de new password*/
+#NPassword:checked ~ .NewPass{
+	display: none;
+}
+.NewPass{
+
+}
 /*@css codigo para presentar la barra de navegacion horizontal y vertical*/
 .Menu{
  	font-family: 'Source Sans Pro', sans-serif;

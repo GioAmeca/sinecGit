@@ -2,7 +2,7 @@
 include_once('../Conexion.php');
 $Con=$_GET['Con'];
 try {
-	$modifica=$cone->prepare("UPDATE `produccion`.`acciones` SET `Owner` =:owner, `DueDate` =:due, `Comments` =:com WHERE `idAcciones` =:id ");
+	$modifica=$conexion->prepare("UPDATE `produccion`.`acciones` SET `Owner` =:owner, `DueDate` =:due, `Comments` =:com WHERE `idAcciones` =:id ");
 
 $modifica->bindParam(':owner',$_GET['responsable']);
 $modifica->bindParam(':due',$_GET['Due']);
@@ -17,7 +17,7 @@ print $_GET['responsable'];
    }
 
 
-
+ 
 header($ruta);
 //exit;
   ?>

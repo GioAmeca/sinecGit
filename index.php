@@ -49,7 +49,7 @@
     <a id="icon-login"><i class="fas fa-users fa-5x"></i></a>
 
     <div style="margin: 30px;">
-      <form action="Back/php/VerificarUser.php" method="POST" >
+      <form action="Back/php/seguridad/VerificarUser.php" method="POST" >
                 <label for="user" class="login-text">Usuario:</label><br>
         
                 
@@ -77,11 +77,20 @@
         </div>
         <div class="uk-modal-body">
               
-              <form action="Back/php/VerificarUser.php" method="POST">  
+              <form action="Back/php/seguridad/activarUser.php" method="POST">  
                   <label for="Nomina" class="login-text">Nomina:</label>
                   <input type="Text" name="Nomina" id="Nomina" placeholder="Numero de nomina/usuario" style="position: absolute; left: 110px; " required><br>
                   <label for="Nombre" class="login-text" >Password:</label>
-                  <input type="Text" name="Nombre" id="Nombre" placeholder="Solo un nombre" style="position: absolute; left: 110px; " required>
+                  <input type="Password" name="Password"   style="position: absolute; left: 110px; " required>
+                 <!-- <input type="checkBox" id="NPassword" name="newpass" style="position: absolute; left: 110px;"> <br>
+                  <div class="NewPass" >
+                  <label  >New password:</label><br>
+                  <input type="password" name="NewPass" placeholder="New Password"  style="position: absolute; left: 110px; "><br> 
+                  <input type="password" name="NewPass2" placeholder="Repeat" style="position: absolute; left: 110px; "><br><br>
+                  </div>
+                -->
+                  <label for="correo" class="login-text" >e-Mail:</label>
+                  <input type="mail" name="correo"  style="position: absolute; left: 110px; " required placeholder="gio@example.com" >
 <div class="uk-modal-footer uk-text-right">
             <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
             <button class="uk-button uk-button-primary" type="submit">Save</button>

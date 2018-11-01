@@ -32,10 +32,10 @@
      $carpeta='';
      include('../menu.php');
      include('../../Back/php/Conexion.php');
-     include ('../../Back/php/Consultas.php');
+     include ('../../Back/php/Consulta/Consultas.php');
      include('../../Back/php/Tablas/TablaAcciones.php');
      include ('../../Back/php/fechas.php');
-     include('../../Back/php/Rapido.php');
+     include('../../Back/php/Consulta/Rapido.php');
 
   ?>
   <div class="bodysito">	
@@ -229,7 +229,7 @@
       }
       
   
-
+//funcion que ayuda a recoger el valor de las variables POST
     function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),

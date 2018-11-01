@@ -6,7 +6,7 @@ include_once('../mail.php');
 
 try {
 	
-	$crear=$cone->prepare("INSERT INTO `produccion`.`acciones` (`Action`,`Open`,`Owner`,`DueDate`,`Estatus`,`Comments`,`WhoClosedIt`,`WhoOpenIt`) VALUES (:accion,:fechaA,:responsable,:fechaB,'1',:comentario,:quienC,:quienA);");
+	$crear=$conexion->prepare("INSERT INTO `produccion`.`acciones` (`Action`,`Open`,`Owner`,`DueDate`,`Estatus`,`Comments`,`WhoClosedIt`,`WhoOpenIt`) VALUES (:accion,:fechaA,:responsable,:fechaB,'1',:comentario,:quienC,:quienA);");
 	$crear->bindParam(':accion',$_POST['Accion']);
 	$crear->bindParam(':fechaA',$hoy);
 	$crear->bindParam(':responsable',$_POST['responsable']);
@@ -17,7 +17,7 @@ try {
 	
     $crear->execute();
     //funcion que manda correo a los involucrados en la accion
-    NewActionMail($_POST['Accion'],$hoy,$_POST['Due'],$_POST['responsable'],$_POST['quienA'],$_POST['quienc'],$_POST['Comentario'],$cone);
+    NewActionMail($_POST['Accion'],$hoy,$_POST['Due'],$_POST['responsable'],$_POST['quienA'],$_POST['quienc'],$_POST['Comentario'],$conexion);
     $ruta='Location:../../../Front/areas/Open.php?Con=0&Ide=&msg=bien';
 } catch (Exception $e) {
 	print 'Error al crear una nueva accion'.$e->getMessage();
