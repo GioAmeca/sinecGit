@@ -2,7 +2,7 @@
 $pass=$_POST['pass'];
 $user=$_POST['user'];
 require_once "../Conexion.php";
-$nomina='GeovannyIgnacioSalazarMedina05abril1995';
+$nomina=rand(19950405,20181231).'Geovanny';
 try {
 	$sql='SELECT * FROM produccion.usuario where NumeroNomina= "'.$user.'" and Contrasena="'.$pass.'";';
 $resultado=$conexion -> query($sql);
@@ -16,7 +16,7 @@ foreach ($resultado as $key ) {
 	$contrasenia=$key[2];
 	}
 } catch (Exception $e) {
-	header('Location:../../../index.php');
+	header('Location:../../../index.php?msg=ErrorAlconsultar');
 }
 
 
@@ -28,10 +28,10 @@ if ($user==$nomina and $pass==$contrasenia) {
 	$_SESSION['nombre']=$nombre;
 	$_SESSION['Apellido']=$apellido;
 	
-	header('Location:../../../Front/Data.php');
+	header('Location:../../../Front/Data.php?'.$nomina);
 }else{
 
-	header('Location:../../../index.php');
+	header('Location:../../../index.php?datosMal');
 }
 
 

@@ -81,7 +81,8 @@
                   <label for="Nomina" class="login-text">Nomina:</label>
                   <input type="Text" name="Nomina" id="Nomina" placeholder="Numero de nomina/usuario" style="position: absolute; left: 110px; " required><br>
                   <label for="Nombre" class="login-text" >Password:</label>
-                  <input type="Password" name="Password"   style="position: absolute; left: 110px; " required>
+                  <input type="Password" name="Password"   style="position: absolute; left: 110px; " required><br><label for="correo" class="login-text" >e-Mail:</label>
+                  <input type="mail" name="correo"  style="position: absolute; left: 110px; " required placeholder="gio@example.com" >
                  <!-- <input type="checkBox" id="NPassword" name="newpass" style="position: absolute; left: 110px;"> <br>
                   <div class="NewPass" >
                   <label  >New password:</label><br>
@@ -89,9 +90,9 @@
                   <input type="password" name="NewPass2" placeholder="Repeat" style="position: absolute; left: 110px; "><br><br>
                   </div>
                 -->
-                  <label for="correo" class="login-text" >e-Mail:</label>
-                  <input type="mail" name="correo"  style="position: absolute; left: 110px; " required placeholder="gio@example.com" >
+                  
 <div class="uk-modal-footer uk-text-right">
+
             <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
             <button class="uk-button uk-button-primary" type="submit">Save</button>
         </div>
@@ -100,6 +101,7 @@
         
     </div>
 </div>
+
 
   <!--Boostrap js-->
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
