@@ -1,7 +1,7 @@
 <?php 
 include_once('../Conexion.php');
 include_once('../fechas.php');
-include_once('../mail.php');
+include_once('../Mail/mail.php');
 
 
 try {

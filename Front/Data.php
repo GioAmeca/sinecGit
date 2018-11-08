@@ -18,9 +18,9 @@
 	<title>prueba</title>
 </head>
 <body >
-  <div uk-scrollspy="cls: uk-animation-kenburns; repeat: true" style="background-color:#dcdcdc;position: absolute; width: 100%; height: 100%;  "> </div>
-
-<div class="Menu">
+  <div uk-scrollspy="cls: uk-animation-kenburns; repeat: true" style="background-color:#dcdcdc;position: absolute; width: 100%; height: 100%;  "> 
+  </div>
+  <div class="Menu">
         <nav class="uk-navbar-container" uk-navbar style="background-color: #3c8dbc; height: 50px;" >
             <div style="position: absolute;top: 5px; left: 10px;">
                 
@@ -36,18 +36,31 @@
                </label></a>                        
             </div>
         </nav>
-<div>
-        <div class="uk-flex uk-flex-center" style="position: relative; top: 50px;">
-      <a href="areas/Open.php" class="menuData">
-        <div class="uk-card uk-card-body" style="background-color: rgba(60, 141, 188, 0.9); border-radius: 10px; ">
-
-        Open Action
-      
-    </div></a>
-    <div class="uk-card  uk-card-body uk-margin-left" style="background-color: rgba(60, 141, 188, 0.9)">Time-Out</div>
-  
-</div>
-</div>
+  </div>
+  <div>
+    <div class="uk-flex uk-flex-center" uk-grid style="position: relative; top: 50px;">
+      <div class="uk-card uk-margin-left" uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
+         <a href="areas/Open.php" class="menuData" style=" text-decoration: none;">
+            <div class="DataMenu">
+               <div style="text-align: center; padding-top: 10px;">
+                  <i class="fas fa-clipboard-list fa-5x"></i> <br>
+                  <b>Open Action</b>
+               </div> 
+            </div>
+         </a>
+      </div>
+      <div class="uk-card uk-margin-left" uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
+         <a href="areas/Time.php" class="menuData" style=" text-decoration: none;">
+            <div class="DataMenu">
+                <div style="text-align: center; padding-top: 10px;">
+                  <i class="far fa-clock fa-5x "></i> <br>
+                  <b>Time-Out</b>
+                </div>
+            </div>
+         </a>
+      </div>
+    </div>
+  </div>
 
     <div style=" background-color: #3c8dbc; width: 100%; height: 80px; position: absolute;  bottom: 1px; " >
     <div class="uk-align-center" style=" color:#fff;  font-size: 10px; text-align: center;"  >

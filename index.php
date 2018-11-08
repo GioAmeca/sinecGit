@@ -51,8 +51,7 @@
     <div style="margin: 30px;">
       <form action="Back/php/seguridad/VerificarUser.php" method="POST" >
                 <label for="user" class="login-text">Usuario:</label><br>
-        
-                
+      
                 <input type="Text" name="user" id="user" placeholder="Nomina" size="25" autofocus required> <br>
                 
                 <label for="pass" class="login-text">Contraseña:</label> <br>
@@ -110,6 +109,61 @@
     <!-- UIkit JS -->
    <script src="Back/Js/uikit.min.js"></script>
    <script src="Back/Js/uikit-icons.min.js"></script>
-
+ <!--script para manejar notificaciones-->
+    <script >
+      var msg= getParameterByName('msg');
+      switch(msg){
+            case 'registrado':
+               UIkit.notification({
+               message: '<div class="alert alert-primary" role="alert"><b class="alert-link">Activated</b></div>',
+               status: 'primary',
+               pos: 'bottom-left',
+               timeout: 5000
+                }); 
+            break;     
+            case 'NewPass':
+               UIkit.notification({
+               message: '<div class="alert alert-primary" role="alert"><b class="alert-link">NewPass</b></div>',
+               status: 'primary',
+               pos: 'bottom-left',
+               timeout: 5000
+                }); 
+            break;    
+            case 'noregistrado':
+                UIkit.notification({
+                message: '<div class="alert alert-danger" role="alert"><b class="alert-link">Error when registering</b></div>',
+                status: 'warning',
+                pos: 'bottom-left',
+                timeout: 5000
+                });
+            break;
+            case 'datosMal':
+                UIkit.notification({
+                message: '<div class="alert alert-danger" role="alert"><b class="alert-link">User or password incorrect</b></div>',
+                status: 'warning',
+                pos: 'bottom-left',
+                timeout: 5000
+                });
+            break;
+            case 'yaRegitrado':
+                UIkit.notification({
+                message: '<div class="alert alert-warning" role="alert"><b class="alert-link">Existing user</b></div>',
+                status: 'warning',
+                pos: 'bottom-left',
+                timeout: 5000
+                });
+            break;
+            
+      }
+      
+  
+//funcion que ayuda a recoger el valor de las variables POST
+    function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+</script>
 </body>
 </html>

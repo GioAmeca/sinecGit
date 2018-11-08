@@ -38,21 +38,40 @@
      include('../../Back/php/Consulta/Rapido.php');
 
   ?>
-  <div class="bodysito">	
-     <nav class="uk-navbar-container" uk-navbar style="padding-top: 5px; padding-left: 5px; padding-right: 5px; padding-bottom: 5px;">
-       <div class="uk-navbar-left">
+  <div class="bodysito" >	
+     <nav class="uk-navbar-container" uk-navbar  style="padding-top: 5px; padding-left: 5px; padding-right: 5px; padding-bottom: 5px;">
+       <div class="uk-navbar-left" uk-scrollspy="cls: uk-animation-slide-left;  repeat: true">
+       
          <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal">New Action</button> 
-         <ul uk-accordion>
+         
            <form> &nbsp;
              <input type="text"  name="Con" value="4" style="display: none;">
              <input type="text" name="Ide"  style="display: none;">
              <input type="Text" placeholder="Something" name="busqueda" required>
              <button type="submit"  class="btn btn-primary" >Search </button>
            </form>
+           &nbsp; or
+          <form> &nbsp;
+             <input type="text"  name="Con" value="5" style="display: none;">
+             <input type="text" name="Ide"  style="display: none;">
+               <select name="busqueda" required >
+                 <datalist id="busqueda">
+                   <!--se incrustan las opciones con el numero de nomina y nombre de los usuarios-->
+                   <?php 
+                      $conUser=who($conexion);
+                      foreach ($conUser as $key) {   
+                         print '<option value="'.$key[0].'">'.$key[1].' '.$key[2].'- '.$key[0].'</option>';     
+                      } 
+                   ?>  
+                </datalist>
+                  
+                </select>
+             <button type="submit"  class="btn btn-primary" >Search </button>
+           </form>
 
        </div>
  
-       <div class="uk-navbar-right" >
+       <div class="uk-navbar-right" uk-scrollspy="cls: uk-animation-slide-right;" >
          <form>
            <button type="submit" class="btn btn-outline-secondary">All</button>&nbsp;
          </form> 
@@ -76,8 +95,8 @@
   </div>
   <br>
 
-
-  <div class="bodysito">
+<!--tabla de las acciones-->
+  <div class="bodysito"  uk-scrollspy="cls: uk-animation-fade;">
      <?php 
      
        $setencia=ConsultasAcciones($conexion);
@@ -85,6 +104,7 @@
      ?>
   </div>
   <br>
+  <!--consulta para generar reporte-->
   <div class="bodysito"  >
     <nav class="uk-navbar-container" uk-navbar >
       <div class="uk-navbar-right">
@@ -98,6 +118,7 @@
       </div>
     </nav>
   </div> <br>
+  <!--datos de la accion a modificar-->
   <div class="bodysito">
     
  	     <?php
@@ -175,6 +196,7 @@
     <!-- UIkit JS -->
     <script src="../../Back/Js/uikit.min.js"></script>
     <script src="../../Back/Js/uikit-icons.min.js"></script>
+    <!--script para manejar notificaciones-->
     <script >
       var msg= getParameterByName('msg');
       switch(msg){
@@ -225,6 +247,14 @@
                 pos: 'bottom-center',
                 timeout: 5000
                 });
+            break;
+           case 'Notify':
+               UIkit.notification({
+               message: '<div class="alert alert-success" role="alert"><b class="alert-link"> Sent Notify </b></div>',
+               status: 'primary',
+               pos: 'bottom-left',
+               timeout: 5000
+                }); 
             break;
       }
       

@@ -1,5 +1,6 @@
 <?php  
-print '
+//print '
+?>
 <!--@html
     Codigo para generar la una barra de navegacion 
     Requiere de: $Icon  tiene el nombre del icon de awesome a utilizar
@@ -18,13 +19,14 @@ print '
                </label>                                 
             </div>
             <div style="position: absolute;top: 9px; right: 40%;">
-               <label >
-                   <p class="Etiqueta-Menu"><i class="'.$Icon.'"><b >'.$Titulo.'</b> </i></p>
+               <label class="d-none d-sm-block">
+                   <p class="Etiqueta-Menu"><i class="fas fa-user-tie"><b ><?php print $Titulo;?></b> </i></p>
                </label>         
                <div uk-dropdown>
                   <ul class="uk-nav uk-dropdown-nav">
                       <li class="uk-active">
-                         <a href="../../Back/php/seguridad/CSESSION.php">Disable</a>
+                         <a href="../../Back/php/seguridad/CSESSION.php">Sign off</a>
+                          <a href="../adm/NewPass.php">New Pass</a>
                       </li>
                   </ul>
                </div>                       
@@ -42,17 +44,18 @@ print '
       un corto donde solo se muestra iconos y un largo 
       donde muestra iconos y texto
   -->
+   
  <div class="ContenedorMenu" >
    <ul class="Lista">
             <a href="" class="menuLargo" style="color:#fff; position: absolute; right: 30px;" ><li> <i class="fas fa-times"></i></li ></a> <br><br>
-            <a href="'.$carpeta.'Open.php"><li class="menuCorto">  <i class="fas fa-clipboard-check fa-"></i><label class="menuLargo">  &nbsp;  &nbsp; Open Action</label></li ></a> <br>
-             <a href="'.$carpeta.'Shipment.php"><li class="menuCorto"><i class="fas fa-box-open fa-"></i><label class="menuLargo">  &nbsp;  &nbsp; Shipment</label></li ></a><br>
-             <a href="'.$carpeta.'Out.php"><li class="menuCorto"><i class="fas fa-plane-departure fa-"></i><label class="menuLargo">  &nbsp;  &nbsp; Output</label></li ></a><br>
-             <a href="'.$carpeta.'Time.php"><li class="menuCorto"><i class="far fa-clock fa-"></i><label class="menuLargo">  &nbsp;  &nbsp; Time-Out</label></li ></a><br>
-             <a href="'.$carpeta.'SPI.php"><li class="menuCorto"><i class="fas fa-search fa-"></i><label class="menuLargo">  &nbsp;  &nbsp; Solder Paste <br> Inspection<br></label></li ></a><br>
-             <a href="'.$carpeta.'AOI.php"><li class="menuCorto"><i class="far fa-eye fa-"></i><label class="menuLargo">  &nbsp;  &nbsp; Automatic Optical <br> Inspection</label></li ></a><br>
-             <a href="'.$carpeta.'SMT.php"><li class="menuCorto"><i class="fas fa-search-location fa-"></i><label class="menuLargo">  &nbsp;  &nbsp; Surface Mounth <br>Tecnology</label></li ></a><br>
+            <a <?php print'href="'.$carpeta.'Open.php"';?> ><li class="menuCorto">  <i class="fas fa-clipboard-check fa-"></i><label class="menuLargo">  &nbsp;  &nbsp; Open Action</label></li ></a> <br>
+             <a <?php print 'href="'.$carpeta.'Shipment.php"';?>><li class="menuCorto"><i class="fas fa-box-open fa-"></i><label class="menuLargo">  &nbsp;  &nbsp; Shipment</label></li ></a><br>
+             <a <?php print 'href="'.$carpeta.'Out.php"';?>><li class="menuCorto"><i class="fas fa-plane-departure fa-"></i><label class="menuLargo">  &nbsp;  &nbsp; Output</label></li ></a><br>
+             <a <?php print 'href="'.$carpeta.'Time.php"';?>><li class="menuCorto"><i class="far fa-clock fa-"></i><label class="menuLargo">  &nbsp;  &nbsp; Time-Out</label></li ></a><br>
+             <a <?php print 'href="'.$carpeta.'SPI.php"';?>><li class="menuCorto"><i class="fas fa-search fa-"></i><label class="menuLargo">  &nbsp;  &nbsp; Solder Paste <br> Inspection<br></label></li ></a><br>
+             <a <?php print 'href="'.$carpeta.'AOI.php"';?>><li class="menuCorto"><i class="far fa-eye fa-"></i><label class="menuLargo">  &nbsp;  &nbsp; Automatic Optical <br> Inspection</label></li ></a><br>
+             <a <?php print 'href="'.$carpeta.'SMT.php"';?>><li class="menuCorto"><i class="fas fa-search-location fa-"></i><label class="menuLargo">  &nbsp;  &nbsp; Surface Mounth <br>Tecnology</label></li ></a><br>
    </ul>
  </div>
+
 </div>
-'; ?>

@@ -1,6 +1,7 @@
 
 <?php
-include_once('Consulta/Rapido.php');
+//clase que contiene metodos para mandar notificacion  de creacion, edicion, y cierre de las acciones 
+include_once('../Consulta/Rapido.php');
 
 
 function NewActionMail($action,$open,$Due,$resposable,$Qopen,$Qclose,$comentari,$conexion){
@@ -102,15 +103,15 @@ function CloseActionMail($action,$open,$Due,$resposable,$Qopen,$Qclose,$comentar
  mail($para,$título,$mensaje,$cabeceras);
  //print($para. $título. $mensaje. $cabeceras);	
 }
-//funcion que manda una notificacion a un correo que no esta involuclado con la accion
-function NotificacionAdd($action,$open,$Due,$resposable,$Qopen,$Qclose,$comentari,$conexion){
+//funcion que manda una notificacion  cuando se modifica la accion 
+function EditarActionMail($action,$open,$Due,$resposable,$Qopen,$Qclose,$comentari,$conexion){
  //treamos los correos de los usuarios
  // Varios destinatarios
  $para ="".correoUser($conexion,$resposable);
  $para.=",".correoUser($conexion,$Qopen);
  $para.=",".correoUser($conexion,$Qclose);
  // título
- $título = 'SINEC New Action Open';
+ $título = 'SINEC  Action Open Notify';
  // nos traemos los datos de los involucrados en la accion 
  $res=whoCon($conexion,$resposable);
  $Qo=whoCon($conexion,$Qopen);

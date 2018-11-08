@@ -2,7 +2,7 @@
 include_once('../Conexion.php');
 include_once('../fechas.php');
 include_once('../Consulta/Rapido.php');
-include_once('../mail.php');
+include_once('../Mail/mail.php');
 if ($_POST['quien']==$_POST['quienc']) {
 	//print'si se puede';
 

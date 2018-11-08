@@ -23,7 +23,7 @@
     <link rel="stylesheet" type="text/css" href="../Css/stilos.css">
     <!-- font google-->
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-  <title>New User</title>
+  <title>New Password</title>
 </head>
 <body >
   <div class="Menu">
@@ -55,7 +55,7 @@
     <a id="icon-login"><i class="fas fa-lock fa-5x"></i></a>
 <br>
     <div style="margin: 30px;">
-      <form action="" method="POST" >
+      <form action="NewPass.php" method="POST" >
        <label  >New password:</label><br>
                   <input type="password" name="NewPass" placeholder="New Password" ><br> <br>
                   <input type="password" name="NewPass2" placeholder="Repeat" ><br><br>
@@ -66,7 +66,32 @@
     </div>
    </div>
 
+<?php 
 
+$nomina=$_SESSION['nomina'];
+require_once('../../Back/php/Conexion.php');
+
+if($_POST['NewPass']!=null ) {
+  if ($_POST['NewPass']==$_POST['NewPass2']) {
+    try {
+      $sql=("UPDATE `produccion`.`usuario` SET `Contrasena` = '".$_POST['NewPass']."' WHERE (`NumeroNomina` = '".$nomina."');
+");
+
+      $update=$conexion->query($sql);
+      
+     session_destroy();
+     header('Location:../../index.php?msg=NewPass');
+     } catch (Exception $e) {
+      print'Error al actualizar la contraceña';
+     }
+   
+  }
+  else{
+    header('Location:NewPass.php?msg=NoCoinsiden');
+  }
+ 
+}
+?>
 
    
 
@@ -77,26 +102,31 @@
     <!-- UIkit JS -->
    <script src="../../Back/Js/uikit.min.js"></script>
    <script src="../../Back/Js/uikit-icons.min.js"></script>
+    <!--script para manejar notificaciones-->
+    <script >
+      var msg= getParameterByName('msg');
+      switch(msg){   
+            case 'NoCoinsiden':
+               UIkit.notification({
+               message: '<div class="alert alert-primary" role="alert"><b class="alert-link">NewPass</b></div>',
+               status: 'primary',
+               pos: 'bottom-left',
+               timeout: 5000
+                }); 
+            break;    
+            
+            
+      }
+      
+  
+//funcion que ayuda a recoger el valor de las variables POST
+    function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+</script>
 
 </body>
 </html>
-<?php 
-require_once('../../Back/php/Conexion.php');
-if($_POST['NewPass']!=null ) {
-  if ($_POST['NewPass']==$_POST['NewPass2']) {
-     try {
-      $sql=("UPDATE `produccion`.`usuario` SET `Contrasena` = '".$_POST['NewPass']."' WHERE (`idUsuario` = '".$nomina."');");
-      $update=$conexion->query($sql);
-      session_start();
-      session_destroy();
-      header('Location:../index.php?msg=Registrado');
-     } catch (Exception $e) {
-      print'Error al actualizar la contraceña';
-     }
-  }
-  else{
-    header('Location:NewPass.php?msg=NoCoinsiden');
-  }
- 
-}
-?>

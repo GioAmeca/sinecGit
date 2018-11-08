@@ -20,7 +20,7 @@ function unaAccion($cone,$id){
   return $setencia1; 
  }      
  
-//funcion que trae todos los nombre de los usuarios
+//funcion que trae todos los nombres de los usuarios
 function who($cone){ 
    try {
    	$sql="SELECT NumeroNomina, Nombre, Apellido FROM produccion.usuario;";

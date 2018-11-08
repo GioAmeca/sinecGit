@@ -42,22 +42,35 @@
 		   break;
        // consulta con contenido de busqueda con cualquier cosa 
        case '4':  
-         $sql="SELECT * FROM produccion.acciones where Owner like '%".$_GET['busqueda']."%' or Action like '%".$_GET['busqueda']."%' or WhoClosedIt like '%".$_GET['busqueda']."%' or WhoOpenIt like '%".$_GET['busqueda']."%'  or Comments like '%".$_GET['busqueda']."%' order by idAcciones desc ;";  
+         $busqueda=$_GET['busqueda'];
+         $sql="SELECT * FROM produccion.acciones where Owner like '%".$busqueda."%' or Action like '%".$busqueda."%' or WhoClosedIt like '%".$busqueda."%' or WhoOpenIt like '%".$busqueda."%'  or Comments like '%".$busqueda."%' order by idAcciones desc ;";  
          //print$sql;    
          try {
            $setencia=$conexion->query($sql); 
          } catch (Exception $e) {
            print('Error en la consulta por Responsable');
-         }       
+         }  
+     
        break;
-	     default:
-		   break;
+        case '5':  
+         $busqueda=$_GET['busqueda'];
+         $sql="SELECT * FROM produccion.acciones where Owner like '%".$busqueda."%' or WhoClosedIt like '%".$busqueda."%' or WhoOpenIt like '%".$busqueda."%' order by idAcciones desc ;";  
+         //print$sql;    
+         try {
+           $setencia=$conexion->query($sql); 
+         } catch (Exception $e) {
+           print('Error en la consulta por Responsable');
+         }  
+     
+       break;
+       default:
+       break;
       }
   }
   return ($setencia);
   
  }
-
+//funcion que hace la consulta de una sola accion  -esta funcion esta repetida en la clase de rapido.php-
  function ConsultaUnAccion($conexion){
  	$setencia1=null;
  	if ($_GET!=null) {

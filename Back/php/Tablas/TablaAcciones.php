@@ -1,8 +1,11 @@
 <?php 
  $Con='0';
+
  if ($_GET!=null) {
    $Con=$_GET['Con'];
+   
  }
+
 
 
 //Funcion que ayuda a imprimir una tabla Html con la informacion recogida de la base de datos de Acciones, la informacion se procesa de la siguiente forma; #.- numero de id de la accion. Action.- la accion como tal. Open, Due Date y Closed.- se recoje la fecha en la que fue creada, se debe de cerrar y fecha que se cerro - respectivamente- con el formato AAAA-MM-DD este de modo se manda al metodo trataFecha() del documento fechas.php que imprime la fecha en formato DD-mes-AAAA. Remaining.- se calcula los dias restantes para que el limited se cumpla. Estatus.- este campo se utilizar para decidir de que color se pondra la fila segunn su estado. Comentario.- cualquier comentario del usuario
@@ -126,7 +129,9 @@ function tablaAcciones($setencia,$cone){
               case '7':
                 $id=$key[0];
               echo "<td>";
+               $busqueda='0';
                echo '<form action="#ancla" method="GET" >
+                 <input type="text" name="busqueda" value="'.$busqueda.'" style="display: none;">
                  <input type="text" name="Con" value="'.$Con.'" style="display: none;">
                  <input type="text" name="Ide" value="'.$id.'" style="display:none;">
                  <button type="submit" id="BEditar" style="border: none; background: none;"> <i class="fas fa-edit"></i>
@@ -169,6 +174,7 @@ function tablaAcciones($setencia,$cone){
 
 //funcion que presenta la informacion de la accion que se modificara 
 function SeleccionarAccion($setencia1,$cone){
+  $nomina=$_SESSION['nomina'];
   global $Con;
 if ($setencia1!=null) {
   print '<h2 style="position:relative; left: 45%; ">Change</h2>';
@@ -186,7 +192,10 @@ if ($setencia1!=null) {
              print '</label> <br>';
              print '<label class="Editable" ><b>Closed:</b>&nbsp;</label>';
              tratoFecha($key[5]);
-             
+             // se rescatan los participantes de la accion para dar permiso de editar la accion
+             $UOpen=$key[9];
+             $UClose=$key[8];
+             $UOwner=$key[3];
             print '</div>';
             print '<div class="col" style="max-width: 320px;" >
                 <form action="../../Back/php/Modificar/ModificarAction.php">
@@ -196,58 +205,55 @@ if ($setencia1!=null) {
                 <select name="responsable" required >
                 <datalist >
                    <!--se incrustan las opciones con el numero de nomina y nombre de los usuarios-->';
-                      $conUser=who($cone);
-                      foreach ($conUser as $kes) {   
-                         print '<option value="'.$kes[0].'"';
-                         if ($key[3]==$kes[0] ){
-                           print'selected';
-                         }
-                         print'>'.$kes[1].' '.$kes[2].'- '.$kes[0].'</option>';     
-                      } 
-                   print ' 
-                </datalist>
-              </select>
-    <label class="Editable" for="Due">Due Date:</label>
-    <input class="Editables" type="Date" name="Due" value="'.$key[4].'"><br>
-    <label class="Editable" for="comentario">Commentary:</label>
-    <textarea class="Editables" name="comentario"  style="width: 300px; height: 100px;" >'.$key[7].'</textarea>
-    <button type="submit" class="btn btn-primary">Save</button>
-  </form>
-  <br>
-            ';
+            $conUser=who($cone);
+            foreach ($conUser as $kes) {   
+               print '<option value="'.$kes[0].'"';
+               if ($key[3]==$kes[0] ){
+                  print'selected';
+               }
+               print'>'.$kes[1].' '.$kes[2].'- '.$kes[0].'</option>';     
+            } 
+            print ' </datalist>
+                    </select>
+                    <label class="Editable" for="Due">Due Date:</label>
+                    <input class="Editables" type="Date" name="Due" value="'.$key[4].'"><br>
+                    <label class="Editable" for="comentario">Commentary:</label>
+                    <textarea class="Editables" name="comentario"  style="width: 300px; height: 100px;" >'.$key[7].'</textarea>';
+            if ($nomina==$UClose or $nomina==$UOpen or $nomina==$UOwner or $nomina=='Admin') {
+                print'<button type="submit" class="btn btn-primary">Save</button>'; 
+             } 
+            else{
+              print '<a href="Open.php?Con='.$Con.'&Ide='.$_GET['Ide'].'&msg=malClose#ancla" class="btn btn-primary" style="text-decoration: line-through;">Save</a>';
+            }
+            print '</form>
+                   <br>
+                   </div> ';
+            print '<div class="col" style="" >
+                  <form action="../../Back/php/Mail/mailAdd.php" method="POST" >
+                 <input type="text" name="Con" value="'.$Con.'" style="display: none;">
+                 <input type="text" name="Ide" value="'.$key[0].'" style="display:none;">
+                  <label class="Editable" for="notify">Notify:</label>
+                  <select name="notify">
+                  <datalist >
+                 <!--se incrustan las opciones con el numero de nomina y nombre de los usuarios-->';
+            $conUser=who($cone);
+            foreach ($conUser as $kes) {   
+               print '<option value="'.$kes[0].'"';
+               if ($key[3]==$kes[0] ){
+                  print'selected';
+               }
+               print'>'.$kes[1].' '.$kes[2].'- '.$kes[0].'</option>';     
+            } 
+            print '</datalist>
+                   </select>';  
 
-            print'</div> ';
-             print '<div class="col" style="" >
-                
-               <label class="Editable" for="notify">Notify:</label>
-                <select name="notify">
-                <datalist >
-                   <!--se incrustan las opciones con el numero de nomina y nombre de los usuarios-->';
-                      $conUser=who($cone);
-                      foreach ($conUser as $kes) {   
-                         print '<option value="'.$kes[0].'"';
-                         if ($key[3]==$kes[0] ){
-                           print'selected';
-                         }
-                         print'>'.$kes[1].' '.$kes[2].'- '.$kes[0].'</option>';     
-                      } 
-                   print ' 
-                </datalist>
-              </select>
-              
-    <button type="submit" class="btn btn-primary">Notify</button>
-  
-  <br>
-            ';
-
-            print'</div> </div></div>';
-  
-  }
+            print '&nbsp;<button type="submit" class="btn btn-primary">Notify</button>';     
+            print '<br><br><br><br><br><br><br><br><br>
+                    </form><p class="alert alert-warning" width="10">Updated: '.$key[10].'</p>
+                  </div> </div></div>';
+     }
+  } 
 }
-
-  
-}
-
- ?>
+?>
 
 
