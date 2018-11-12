@@ -31,46 +31,57 @@ if ($_SESSION['activa']!='yes') {
       $carpeta='';
       include('../menu.php');
  	 ?>
- 	<div class="bodysito"  style="width: 360px; height: 1200px;">
- 	  <h2 align="center">Registry</h2>
- 	 	<div>
-          <form style="padding-left: 10px;">
-           <div>
-        	<label for="dia"> Date <i class="far fa-calendar-alt"></i> </label>
-        	<input type="Date" name="dia">
-        	<div style="border-style: solid; padding-left: 10px;padding-top: 10px; max-width:240px; position: relative; left:55px; ">
-        	   <label  > Start <i class="far fa-clock"></i></label>
-        	   <input type="time" name="Hora" value="00:00:00" step="2"><br>
-        	   <label  > End &nbsp;<i class="fas fa-clock"></i> </label>
-        	   <input type="time" name="Hora2" value="00:00:00" step="2"><br>
-        	   <label   > Total <i class="fas fa-stopwatch"></i> </label>
-        	   <input type="time" name="Total" value="00:00:00" step="2" required="">
-            </div>
-            
-           </div>
-           <div>
-           	<br>
-           	  <label>Line  &nbsp; &nbsp; <i class="fas fa-industry"></i></label>
-           	  <input type="text" name="linea"><br>
-           	  <label>Area  &nbsp; &nbsp; <i class="fas fa-vector-square"></i></label>
-           	  <input type="text" name="area"><br>
-           	  <label>Equipment  <i class="fas fa-digital-tachograph"></i></i></label>
-           	  <input type="text" name="maquina"><br>
-           	  <label >Workforce <i class="fas fa-users-cog"></i></label>
-           	  <input type="text" name="afectados">
-           </div>
-           <div>
-           	  <label>Cause &nbsp;<i class="fas fa-exclamation-circle"></i></label>
-           	  <input type="text" name="causa"><br>	
-           	  <label>Type &nbsp; &nbsp;<i class="fas fa-code"></i></label>
-           	  <input type="text" name="tipo"><br>
-           	  <label>Responsible&nbsp; &nbsp;<i class="fas fa-user-shield"></i></i></label>
-           	  <input type="text" name="tipo"><br>
-           </div>  
-           <button  type="submit"> save</button>
-          </form>
-        </div>	
-        <br> 	
+ 	<div class="bodysito1" style="width: 760px;" >
+    <h1 align="center" >Registry</h1>
+    <form uk-grid style="padding-top: 15px; padding-left: 15px;" action="../../Back/php/Crear/NuevoTimeOut.php" method="GET">
+      <div style=" width: 400px; border-right:  solid;">
+      	<label>Project: <i class="fas fa-microchip"></i> </label>
+        <input class="formTime" type="Text" name="Proyecto" placeholder="Jabil" required><br>
+        <label>Line: <i class="fas fa-industry"></i> </label>
+        <input  class="formTime" type="Text" name="Linea" placeholder="Line 2"required><br>
+        <label>Equipment / ID: <i class="fas fa-digital-tachograph"></i> </label>
+        <input class="formTime" type="Text" name="Equipo" placeholder="DEK"required><br>
+        <label>Area: <i class="fas fa-vector-square"></i> </label>
+        <input class="formTime" type="Text" name="Area" placeholder="Procesos"required><br>
+        <label>Innings:</label>
+        <input class="formTime" type="text" name="turno" placeholder="2, Vespertino"required><br>
+        <label>Date: <i class="far fa-calendar-alt"></i> </label>
+        <input class="formTime" type="date" name="Fecha" required><br>
+        <div style="border-style: solid; max-width: 325px;">
+           <br>
+           <label>Report:<i class="far fa-flag"></i> </label>
+           <input class="formTime" type="time" name="Reporte" step="2" required><br>
+           <label>Initiated: <i class="far fa-play-circle"></i> </label>
+           <input class="formTime" type="time" name="inicio" step="2" required><br>
+           <label>Finished: <i class="far fa-stop-circle"></i></label>
+           <input class="formTime" type="time" name="Fin" step="2" required><br>
+           <label>Time-Stop:  <i class="far fa-stop-circle"></i></label>
+           <input class="formTime" type="time" name="Tiempo" step="2" required><br>
+        </div>
+        <br>
+        <label>It is intermittent <i class="fas fa-retweet"></i></label>
+        <input class="formTime" type="checkbox" name="intermitente" value="1"><br>
+        <label>Issue: <i class="fas fa-exclamation-triangle"></i></label><br>
+        <textarea name="problema" rows="3" cols="38" placeholder="El Equipo se Apaga"required></textarea>
+        </div>
+        <div>
+        <label>Cause and diagnosis: <i class="fas fa-file-signature"></i></label><br>
+        <textarea name="Causa" rows="2" cols="38" placeholder="El Equipo dek se Apaga"required></textarea><br>
+        <label>Corrective action: <i class="fas fa-wrench"></i></label><br>
+        <textarea name="accion" rows="2" cols="38" placeholder="El Equipo dek se reinicia y se monitorea"required></textarea><br>
+        <label>Comment: <i class="far fa-comment-alt"></i></label><br>
+        <textarea name="comentario" rows="2" cols="38" placeholder=""></textarea><br>
+        <label>Used spares
+: <i class="fas fa-box-open"></i></label><br>
+        <textarea name="partes" rows="2" cols="38" placeholder=""></textarea><br>
+        <div style="position: relative; left: 169px;">
+          <label>NO: #</label>
+          <input type="text" name="numero" size="10"></div><br>
+          <input type="text" name="usuario" value="<?php print ($_SESSION['nomina']);?>" style="display: none;">
+           <input type="submit" name="">
+        </div>
+      </form>
+
  	</div>
 
   <!--Boostrap js-->

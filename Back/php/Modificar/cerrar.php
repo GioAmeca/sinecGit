@@ -1,4 +1,8 @@
 <?php
+session_start();
+   if ($_SESSION['activa']!='yes') {
+      header('Location:../../index.php');
+   }
 include_once('../Conexion.php');
 include_once('../fechas.php');
 include_once('../Consulta/Rapido.php');

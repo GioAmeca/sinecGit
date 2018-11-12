@@ -25,7 +25,7 @@
                <div uk-dropdown>
                   <ul class="uk-nav uk-dropdown-nav">
                       <li class="uk-active">
-                         <a href="../../Back/php/seguridad/CSESSION.php">Sign off</a>
+                         <a href="../../Back/php/seguridad/CSESSION.php"> <i class="fas fa-sign-out-alt"></i>Sign off</a>
                           <a href="../adm/NewPass.php">New Pass</a>
                       </li>
                   </ul>

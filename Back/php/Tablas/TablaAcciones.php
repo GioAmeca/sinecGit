@@ -1,4 +1,8 @@
 <?php 
+
+   if ($_SESSION['activa']!='yes') {
+      header('Location:../../index.php');
+   }
  $Con='0';
 
  if ($_GET!=null) {
@@ -220,10 +224,10 @@ if ($setencia1!=null) {
                     <label class="Editable" for="comentario">Commentary:</label>
                     <textarea class="Editables" name="comentario"  style="width: 300px; height: 100px;" >'.$key[7].'</textarea>';
             if ($nomina==$UClose or $nomina==$UOpen or $nomina==$UOwner or $nomina=='Admin') {
-                print'<button type="submit" class="btn btn-primary">Save</button>'; 
+                print'<button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>'; 
              } 
             else{
-              print '<a href="Open.php?Con='.$Con.'&Ide='.$_GET['Ide'].'&msg=malClose#ancla" class="btn btn-primary" style="text-decoration: line-through;">Save</a>';
+              print '<a href="Open.php?Con='.$Con.'&Ide='.$_GET['Ide'].'&msg=malClose#ancla" class="btn btn-primary" style="text-decoration: line-through;"><i class="fas fa-save"></i> Save</a>';
             }
             print '</form>
                    <br>
@@ -247,8 +251,8 @@ if ($setencia1!=null) {
             print '</datalist>
                    </select>';  
 
-            print '&nbsp;<button type="submit" class="btn btn-primary">Notify</button>';     
-            print '<br><br><br><br><br><br><br><br><br>
+            print '&nbsp;<button type="submit" class="btn btn-primary"> Notify</button>';     
+            print '<br><br><br><br><br><br><br><br>
                     </form><p class="alert alert-warning" width="10">Updated: '.$key[10].'</p>
                   </div> </div></div>';
      }

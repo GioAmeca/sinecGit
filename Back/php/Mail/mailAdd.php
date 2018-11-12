@@ -1,5 +1,9 @@
 
 <?php
+session_start();
+   if ($_SESSION['activa']!='yes') {
+      header('Location:../../index.php');
+   }
 //clase que manda correo de notificacion a un usuario que se agrega por el usuario
 include_once('../Consulta/Rapido.php');
 include_once('../Consulta/Consultas.php');

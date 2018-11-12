@@ -50,18 +50,18 @@
 
     <div style="margin: 30px;">
       <form action="Back/php/seguridad/VerificarUser.php" method="POST" >
-                <label for="user" class="login-text">Usuario:</label><br>
+                <label for="user" class="login-text">Usuario: <i class="fas fa-user-alt"></i></label><br>
       
-                <input type="Text" name="user" id="user" placeholder="Nomina" size="25" autofocus required> <br>
+                <input type="Text" name="user" id="user" placeholder="Nomina" size="32" autofocus required> <br>
                 
-                <label for="pass" class="login-text">Contraseña:</label> <br>
+                <label for="pass" class="login-text">Contraseña: <i class="fas fa-key"></i></label> <br>
                
-                <input type="password" name="pass" id="pass" placeholder="Password" size="25" required><br><br>
+                <input type="password" name="pass" id="pass" placeholder="Password" size="32" required><br><br>
                 
-                <button type="submit" class="btn btn-primary">Entrar</button>&nbsp;&nbsp;&nbsp;
+                <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Entrar</button>&nbsp;&nbsp;&nbsp;
 
-                <a href="//172.16.0.21" class="btn btn-light">Atras</a> &nbsp;&nbsp;
-                <button type="button" href="#modal-Registro" class="btn btn-success" uk-toggle> Activate</button>            
+                <a href="//172.16.0.21" class="btn btn-light"><i class="fas fa-chevron-left"></i> Atras</a> &nbsp;&nbsp;
+                <button type="button" href="#modal-Registro" class="btn btn-success" uk-toggle> <i class="fas fa-user-check"></i> Activate</button>            
          </form>
     </div>
    </div>
@@ -77,11 +77,11 @@
         <div class="uk-modal-body">
               
               <form action="Back/php/seguridad/activarUser.php" method="POST">  
-                  <label for="Nomina" class="login-text">Nomina:</label>
-                  <input type="Text" name="Nomina" id="Nomina" placeholder="Numero de nomina/usuario" style="position: absolute; left: 110px; " required><br>
-                  <label for="Nombre" class="login-text" >Password:</label>
-                  <input type="Password" name="Password"   style="position: absolute; left: 110px; " required><br><label for="correo" class="login-text" >e-Mail:</label>
-                  <input type="mail" name="correo"  style="position: absolute; left: 110px; " required placeholder="gio@example.com" >
+                  <label for="Nomina" class="login-text">Nomina: <i class="far fa-address-card"></i></label>
+                  <input type="Text" name="Nomina" id="Nomina" placeholder="Numero de nomina/usuario" style="position: absolute; left: 130px; " required><br>
+                  <label for="Nombre" class="login-text" >Password: <i class="fas fa-key"></i></label>
+                  <input type="Password" name="Password"   style="position: absolute; left: 130px; " required><br><label for="correo" class="login-text" >e-Mail: <i class="fas fa-at"></i></label>
+                  <input type="mail" name="correo"  style="position: absolute; left: 130px; " required placeholder="gio@example.com" >
                  <!-- <input type="checkBox" id="NPassword" name="newpass" style="position: absolute; left: 110px;"> <br>
                   <div class="NewPass" >
                   <label  >New password:</label><br>
@@ -93,7 +93,7 @@
 <div class="uk-modal-footer uk-text-right">
 
             <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-            <button class="uk-button uk-button-primary" type="submit">Save</button>
+            <button class="uk-button uk-button-primary" type="submit"><i class="far fa-save"></i> Save</button>
         </div>
               </form>
         </div>

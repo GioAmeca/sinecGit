@@ -1,4 +1,8 @@
 <?php 
+
+   if ($_SESSION['activa']!='yes') {
+      header('Location:../../index.php');
+   }
 //funcion caduco. esta funcion recibe el id de una accion y verifica si esta accion esta vencida 
 function caduco($cone,$id){                 
   try {

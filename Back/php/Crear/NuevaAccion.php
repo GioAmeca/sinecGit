@@ -1,4 +1,11 @@
 <?php 
+/*@Geovanny salazar
+clase que recibe los datos de open action y los registra en la basde de  datos 
+*/
+session_start();
+   if ($_SESSION['activa']!='yes') {
+      header('Location:../../index.php');
+   }
 include_once('../Conexion.php');
 include_once('../fechas.php');
 include_once('../Mail/mail.php');

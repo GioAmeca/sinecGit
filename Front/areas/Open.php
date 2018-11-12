@@ -42,13 +42,13 @@
      <nav class="uk-navbar-container" uk-navbar  style="padding-top: 5px; padding-left: 5px; padding-right: 5px; padding-bottom: 5px;">
        <div class="uk-navbar-left" uk-scrollspy="cls: uk-animation-slide-left;  repeat: true">
        
-         <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal">New Action</button> 
+         <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus-circle"></i> New Action</button> 
          
            <form> &nbsp;
              <input type="text"  name="Con" value="4" style="display: none;">
              <input type="text" name="Ide"  style="display: none;">
              <input type="Text" placeholder="Something" name="busqueda" required>
-             <button type="submit"  class="btn btn-primary" >Search </button>
+             <button type="submit"  class="btn btn-primary" ><i class="fas fa-search"></i> Search </button>
            </form>
            &nbsp; or
           <form> &nbsp;
@@ -66,7 +66,7 @@
                 </datalist>
                   
                 </select>
-             <button type="submit"  class="btn btn-primary" >Search </button>
+             <button type="submit"  class="btn btn-primary" ><i class="fas fa-search"></i> Search </button>
            </form>
 
        </div>
@@ -113,7 +113,7 @@
       <input type="Date" name="From" required>
       <label>To</label>
       <input type="Date" name="To" required>
-      <button type="submit" class="btn btn-info" >Report</button>
+      <button type="submit" class="btn btn-info" ><i class="far fa-calendar-check"></i> Report</button>
     </form> &nbsp;&nbsp;
       </div>
     </nav>
@@ -140,7 +140,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="bodysito1" style="padding-left: 30px;" >
+          <div class="" style="padding-left: 30px;" >
              <label><b>Open Date: </b><?php print $hoy;?> Now </label> <br>
              <label><b>Who Open it: </b> <?php Print $_SESSION['nombre'].' '.$_SESSION['Apellido']; ?> </label>
              <br>
@@ -179,7 +179,7 @@
                 <br>
                 <label for="Comentario" ><b>Commentary:</b></label><br>
                 <textarea name="Comentario" style="width: 332px; height: 100px;" ></textarea><br><br>        
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <br>
              </form>

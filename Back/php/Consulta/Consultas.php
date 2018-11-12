@@ -1,4 +1,8 @@
  <?php 
+
+   if ($_SESSION['activa']!='yes') {
+      header('Location:../../index.php');
+   }
  $Con='0';
  if ($_GET!=null) {
    $Con=$_GET['Con'];
