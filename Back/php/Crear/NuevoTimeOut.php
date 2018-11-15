@@ -17,7 +17,7 @@ $A=1;
 
 require_once('../Conexion.php');
  try { 
- 	$crear=$conexion->prepare("INSERT INTO `produccion`.`tiempomuertos` (`Proyecto`,`Linea`,`Equipo`,`Area`,`Turno`,`Fecha`,`Reportado`,`Iniciado`,`Fin`,`Minutos`,`Intermitente`,`Problema`,`Causa`,`AccionCorectiva`,`Comentario`,`Partes`,`NumeroParte`,`Reportante`,`Regitrado`) VALUES(:Proyecto,:Linea,:Equipo,:Area,:Turno,:Fecha,:Reportado,:Iniciado,:Fin,:Minutos,:Intermitente,:Problema,:Causa,:AccionCorectiva,:Comentario,:Partes,:NumeroParte,:Reportante,:Regitrado);");
+ 	$crear=$conexion->prepare("INSERT INTO `produccion`.`tiempomuertos` (`Proyecto`,`Linea`,`Equipo`,`Area`,`Turno`,`Fecha`,`Reportado`,`Iniciado`,`Fin`,`Minutos`,`Intermitente`,`Problema`,`Causa`,`AccionCorectiva`,`Comentario`,`Partes`,`NumeroParte`,`Reportante`,`Regitrado`,`Responsable`) VALUES(:Proyecto,:Linea,:Equipo,:Area,:Turno,:Fecha,:Reportado,:Iniciado,:Fin,:Minutos,:Intermitente,:Problema,:Causa,:AccionCorectiva,:Comentario,:Partes,:NumeroParte,:Reportante,:Regitrado,:Responsable);");
 
  	$crear->bindParam(':Proyecto',$_GET['Proyecto']);
  	$crear->bindParam(':Linea',$_GET['Linea']); 
@@ -38,6 +38,7 @@ require_once('../Conexion.php');
  	$crear->bindParam(':NumeroParte',$_GET['numero']); 
  	$crear->bindParam(':Reportante',$_GET['usuario']); 
  	$crear->bindParam(':Regitrado',$hoy); 
+ 	$crear->bindParam(':Responsable',$_GET['responsable']);
     $crear->execute();
     header('Location:../../../Front/areas/Time.php?msg=TimeSave');
  } catch (Exception $e) {

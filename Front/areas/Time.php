@@ -3,6 +3,10 @@ session_start();
 if ($_SESSION['activa']!='yes') {
 	header('Location:../../index.php');
 }
+include_once('../../Back/php/Tablas/TablaTiempos.php');
+include_once('../../Back/php/Conexion.php');
+include_once('../../Back/php/Consulta/ConsultasTime.php');
+include_once('../../Back/graficos/GraficasTime.php');
  ?>
  <!DOCTYPE html>
  <html>
@@ -31,10 +35,12 @@ if ($_SESSION['activa']!='yes') {
       $carpeta='';
       include('../menu.php');
  	 ?>
- 	<div class="bodysito1" style="width: 760px;" >
+<div uk-grid="center" >
+  <!--registro de tiempo muerto-->
+ 	<div class="bodysito1" style="width: 800px; min-width: 660px;  "  >
     <h1 align="center" >Registry</h1>
-    <form uk-grid style="padding-top: 15px; padding-left: 15px;" action="../../Back/php/Crear/NuevoTimeOut.php" method="GET">
-      <div style=" width: 400px; border-right:  solid;">
+    <form uk-grid class="bb" style="padding-top: 15px; padding-left: 10px;" action="../../Back/php/Crear/NuevoTimeOut.php" method="GET">
+      <div class="aa" style=" width: 400px; border-right:  solid; ">
       	<label>Project: <i class="fas fa-microchip"></i> </label>
         <input class="formTime" type="Text" name="Proyecto" placeholder="Jabil" required><br>
         <label>Line: <i class="fas fa-industry"></i> </label>
@@ -60,30 +66,68 @@ if ($_SESSION['activa']!='yes') {
         </div>
         <br>
         <label>It is intermittent <i class="fas fa-retweet"></i></label>
-        <input class="formTime" type="checkbox" name="intermitente" value="1"><br>
+        <input class="formTime" style="left: 190px;" type="checkbox" name="intermitente" value="1"><br>
         <label>Issue: <i class="fas fa-exclamation-triangle"></i></label><br>
         <textarea name="problema" rows="3" cols="38" placeholder="El Equipo se Apaga"required></textarea>
-        </div>
-        <div>
+      </div>
+        <div >
         <label>Cause and diagnosis: <i class="fas fa-file-signature"></i></label><br>
         <textarea name="Causa" rows="2" cols="38" placeholder="El Equipo dek se Apaga"required></textarea><br>
         <label>Corrective action: <i class="fas fa-wrench"></i></label><br>
         <textarea name="accion" rows="2" cols="38" placeholder="El Equipo dek se reinicia y se monitorea"required></textarea><br>
         <label>Comment: <i class="far fa-comment-alt"></i></label><br>
         <textarea name="comentario" rows="2" cols="38" placeholder=""></textarea><br>
-        <label>Used spares
-: <i class="fas fa-box-open"></i></label><br>
+        <label>Used spares: <i class="fas fa-box-open"></i></label><br>
         <textarea name="partes" rows="2" cols="38" placeholder=""></textarea><br>
         <div style="position: relative; left: 169px;">
           <label>NO: #</label>
-          <input type="text" name="numero" size="10"></div><br>
+          <input type="text" name="numero" size="10">
+        </div>
+        
+        <label for="responsable"><b>Answerable:</b></label>
+        <br>  
+
+                <select name="responsable" required >
+                 <datalist id="responsable">
+                   <!--se incrustan las opciones con el numero de nomina y nombre de los usuarios-->
+                   <?php 
+                   include('../../Back/php/Conexion.php');
+                   include('../../Back/php/Consulta/Rapido.php');
+                      $conUser=who($conexion);
+                      foreach ($conUser as $key) {   
+                         print '<option value="'.$key[0].'">'.$key[1].' '.$key[2].'- '.$key[0].'</option>';     
+                      } 
+                   ?>  
+                </datalist>
+                  
+                </select>    
+           <br>
           <input type="text" name="usuario" value="<?php print ($_SESSION['nomina']);?>" style="display: none;">
-           <input type="submit" name="">
+           <button style="position: relative; left: 232px; top: 3px;" type="submit" class="btn btn-primary" name=""><i class="fas fa-save"></i> Save</button>
         </div>
       </form>
-
  	</div>
-
+  <div style="width: 5px;"></div><!--espacio entre registro y graficas-->
+  <!--graficas rapidas-->
+  <div class="bodysito1" style=" width: 800px; height: 660px;" >
+  <div uk-grid>
+    <script src="../../Back/Js/Chart/dist/Chart.min.js"></script>
+    <div style="width: 400px; height:330px; margin-left: -30px;">
+      <?php
+          SemanaBaraHorizontal($conexion);  ?>
+    </div>
+    <div style="width: 400px; height:330px; ">
+      <?php TiempoTrabajadoTiempoMuerto($conexion);  ?>
+    </div>
+  </div>
+  </div>
+</div>
+<br>
+<div uk-grid>
+<div class="bodysito" style="width: 1645px;"> <?php 
+$setencia=ConsultaTiempos($conexion);
+TablaGeneral($setencia); ?> </div>
+</div>
   <!--Boostrap js-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
