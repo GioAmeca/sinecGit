@@ -2,14 +2,15 @@
     //grafica horizontal de tiempos muertos por dias de la semana 
    function SemanaBaraHorizontal($conexion){
   	    // codigo que optiene la fecha de hoy y 7 dias atras en formato Y-m-d
+    //print date('Y-m-d');
        date_default_timezone_set('America/Mexico_City');
-  	    $sql=("SELECT sum(minute(minutos))+(sum(second(minutos))/60)+(sum(hour(minutos))*60), Fecha FROM produccion.tiempomuertos where Fecha='".date('Y-m-d')."' 
-         union SELECT sum(minute(minutos))+(sum(second(minutos))/60)+(sum(hour(minutos))*60), Fecha FROM produccion.tiempomuertos where Fecha='".date('Y-m-d',strtotime('-1 day'))."'
-         union SELECT sum(minute(minutos))+(sum(second(minutos))/60)+(sum(hour(minutos))*60), Fecha FROM produccion.tiempomuertos where Fecha='".date('Y-m-d',strtotime('-2 day'))."' 
-         union SELECT sum(minute(minutos))+(sum(second(minutos))/60)+(sum(hour(minutos))*60), Fecha FROM produccion.tiempomuertos where Fecha='".date('Y-m-d',strtotime('-3 day'))."'
-         union SELECT sum(minute(minutos))+(sum(second(minutos))/60)+(sum(hour(minutos))*60), Fecha FROM produccion.tiempomuertos where Fecha='".date('Y-m-d',strtotime('-4 day'))."' 
-         union SELECT sum(minute(minutos))+(sum(second(minutos))/60)+(sum(hour(minutos))*60), Fecha FROM produccion.tiempomuertos where Fecha='".date('Y-m-d',strtotime('-5 day'))."'
-         union SELECT sum(minute(minutos))+(sum(second(minutos))/60)+(sum(hour(minutos))*60), Fecha FROM produccion.tiempomuertos where Fecha='".date('Y-m-d',strtotime('-6 day'))."';");
+  	    $sql=("SELECT ROUND (sum(minute(minutos))+(sum(second(minutos))/60)+(sum(hour(minutos))*60)), Fecha FROM produccion.tiempomuertos where Fecha='".date('Y-m-d')."' 
+         union SELECT ROUND (sum(minute(minutos))+(sum(second(minutos))/60)+(sum(hour(minutos))*60)), Fecha FROM produccion.tiempomuertos where Fecha='".date('Y-m-d',strtotime('-1 day'))."'
+         union SELECT ROUND (sum(minute(minutos))+(sum(second(minutos))/60)+(sum(hour(minutos))*60)), Fecha FROM produccion.tiempomuertos where Fecha='".date('Y-m-d',strtotime('-2 day'))."' 
+         union SELECT ROUND (sum(minute(minutos))+(sum(second(minutos))/60)+(sum(hour(minutos))*60)), Fecha FROM produccion.tiempomuertos where Fecha='".date('Y-m-d',strtotime('-3 day'))."'
+         union SELECT ROUND (sum(minute(minutos))+(sum(second(minutos))/60)+(sum(hour(minutos))*60)), Fecha FROM produccion.tiempomuertos where Fecha='".date('Y-m-d',strtotime('-4 day'))."' 
+         union SELECT ROUND (sum(minute(minutos))+(sum(second(minutos))/60)+(sum(hour(minutos))*60)), Fecha FROM produccion.tiempomuertos where Fecha='".date('Y-m-d',strtotime('-5 day'))."'
+         union SELECT ROUND (sum(minute(minutos))+(sum(second(minutos))/60)+(sum(hour(minutos))*60)), Fecha FROM produccion.tiempomuertos where Fecha='".date('Y-m-d',strtotime('-6 day'))."';");
        //print $sql;
   	    $tiempos="";
   	    try {
@@ -17,15 +18,17 @@
           foreach ($setenciaTime as $key) {     	
         		 $tiempos=$tiempos.$key[0].",";
           }
-          // print $tiempos;
+        //  print $tiempos;
   	    } catch (Exception $e) {
   		    print 'consulta mal ejecutada'.$e;
   	    }
     // codigo que optiene la fecha de hoy y 7 dias atras en formato MMM-d 
     $dias='';
   	 for ($a=0; $a <7 ; $a++) { 
+
   		     $dias=$dias.'"'.date('M-d',strtotime('-'.$a.' day')).'",';
   	   }
+      // print $dias;
     ?>
     <canvas id="grafico1"></canvas>
         <script>
@@ -36,7 +39,7 @@
                    labels: [<?php print $dias; ?>],
                    datasets: [{
                       label: 'Minutes Out/ week',
-                      data: [<?php print $tiempos ?>],
+                      data: [<?php print $tiempos; ?>],
                       backgroundColor: [
                          'rgba(255, 99, 132, 0.2)',
                          'rgba(54, 162, 235, 0.2)',
@@ -75,11 +78,27 @@
 
    //grafica de pastel tiempo trabajado, tiempo muertos
    function TiempoTrabajadoTiempoMuerto($conexion){
-   	 
+   	date_default_timezone_set('America/Mexico_City');
+   	 $dia=date('N');
+   	 if (	$dia==7) {//si es 7 es domingo y no se labora y se le resta un dia para que la stencia sea de sabado a lunes
+   	 	$dia--;
+   	 }
+   	 $dia--;
+   	 	$sql=("SELECT round(sum(minute(Minutos))+(sum(second(Minutos))/60)+(sum(hour(Minutos))*60)) FROM produccion.tiempomuertos where Fecha between '2018-11-19' and '2018-11-19' union SELECT sum(minutos) FROM produccion.turnos  where estado=1;");
+   	 	//print $sql;
        try {
-       	$sql=("");
+         $tiempomuerto=$conexion->query($sql);
+          foreach ($tiempomuerto as $key ) {
+                for ($i=0; $i <2 ; $i++) { 
+                  $tiempomuertos=$key[0];
+                  $tiempotrabajado=$key[1];  
+                 }
+          }
+          
+          $tiempotrabajado=$tiempotrabajado-$tiempomuertos;
+    
        } catch (Exception $e) {
-       	print 'Consulta para llenar grafica erronia'.$e;
+       	print 'Consulta para llenar grafica erronea'.$e;
        }
        ?>
            <canvas id="grafico2" ></canvas>
