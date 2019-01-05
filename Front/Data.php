@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="Css/stilos.css">
     <!-- font google-->
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-	<title>prueba</title>
+	<title>Menu</title>
 </head>
 <body >
   <div uk-scrollspy="cls: uk-animation-kenburns; repeat: true" style="background-color:#dcdcdc;position: absolute; width: 100%; height: 100%;  "> 
@@ -55,6 +55,16 @@
                 <div style="text-align: center; padding-top: 10px;">
                   <i class="far fa-clock fa-5x "></i> <br>
                   <b>Time-Out</b>
+                </div>
+            </div>
+         </a>
+      </div>
+      <div class="uk-card uk-margin-left" uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
+         <a href="areas/Time.php" class="menuData" style=" text-decoration: none;">
+            <div class="DataMenu">
+                <div style="text-align: center; padding-top: 10px;">
+                  <i class="fas fa-umbrella fa-5x"></i></i> <br>
+                  <b>MSD</b>
                 </div>
             </div>
          </a>

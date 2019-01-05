@@ -1,5 +1,5 @@
 <?php 
-
+   
    if ($_SESSION['activa']!='yes') {
       header('Location:../../index.php');
    }
@@ -66,4 +66,8 @@ function correoUser($cone,$ide){
    }
    return($correo);
  }
+
+
+ 
  ?>
+
