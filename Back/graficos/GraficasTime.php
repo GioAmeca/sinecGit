@@ -71,7 +71,7 @@
    	   	$dia--;
    	  }
    	 	$sql=("SELECT round(sum(minute(Minutos))+(sum(second(Minutos))/60)+(sum(hour(Minutos))*60)) FROM produccion.tiempomuertos where Fecha between '".date('Y-m-d',strtotime('-6 day'))."' and '".date('Y-m-d')."';");
-   	 	//print $sql;
+   	 //print $sql;
        try {
          $tiempomuerto=$conexion->query($sql);
           foreach ($tiempomuerto as $key ) {
@@ -80,7 +80,7 @@
          
          print "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tiempo muerto: ".floor($tiempomuertos/60)." horas ".round(($tiempomuertos%60)). " minutos";
          
-          $tiempotrabajado=round(((8640-$tiempomuertos)*100)/8640,2);
+          $tiempotrabajado=round(((10080-$tiempomuertos)*100)/10080,2);
           $tiempomuertos=round(100-$tiempotrabajado,2);
 
        } catch (Exception $e) {

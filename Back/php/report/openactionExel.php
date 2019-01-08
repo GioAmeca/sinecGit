@@ -54,7 +54,8 @@ $objphpExcel->getActiveSheet()->SetCellValue('C2','Report from: '.$de.' => '.$a)
 				    $objphpExcel->getActiveSheet()->getStyle('C'.$fila)->applyFromArray($estilo);
 					break;
 				case '3':
-				    $objphpExcel->getActiveSheet()->SetCellValue('D'.$fila,$key[3]);
+				    $res=whoCon($conexion,$key[3]);
+				    $objphpExcel->getActiveSheet()->SetCellValue('D'.$fila,$res);
 				    $objphpExcel->getActiveSheet()->getStyle('D'.$fila)->applyFromArray($estilo);
 					break;
 				case '4':
@@ -66,7 +67,16 @@ $objphpExcel->getActiveSheet()->SetCellValue('C2','Report from: '.$de.' => '.$a)
 				    $objphpExcel->getActiveSheet()->getStyle('F'.$fila)->applyFromArray($estilo);
 					break;
 				case '6':
-				    $objphpExcel->getActiveSheet()->SetCellValue('G'.$fila,$key[6]);
+				if ($key[6]=='1') {
+					$estado='Open';
+				}
+				if ($key[6]=='2') {
+					$estado='Beaten';
+				}
+				if ($key[6]=='3') {
+					$estado='Closed';
+				}
+				    $objphpExcel->getActiveSheet()->SetCellValue('G'.$fila,$estado);
 				    $objphpExcel->getActiveSheet()->getStyle('G'.$fila)->applyFromArray($estilo);
 					break;
 				case '8':
@@ -90,5 +100,18 @@ header('Cache-Control: max-age=0');
  
 $objphpWriter = PHPExcel_IOFactory::createWriter($objphpExcel, 'Excel2007');
 $objphpWriter->save('php://output');
- 
+ function whoCon($cone,$ide){ 
+   try {
+   	$sql="SELECT NumeroNomina, Nombre, Apellido FROM produccion.usuario where NumeroNomina ='".$ide."';";
+   	$conUserID=$cone->query($sql);
+   //	print $sql;
+   } catch (Exception $e) {
+   	echo "Error al consultar los usuarios  ".$e->GetMessage();
+   }
+   foreach ($conUserID as $key ) {
+    $datos =$key[1] ." ".$key[2]."- ".$key[0];
+   
+   }
+   return($datos);
+ }
  ?>

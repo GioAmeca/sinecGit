@@ -90,7 +90,7 @@ include_once('../../Back/graficos/GraficasTime.php');
         <textarea name="partes" rows="2" cols="38" placeholder=""></textarea><br>
         <div style="position: relative; left: 80px;">
           <label>NO: #</label>
-          <input type="number" name="numero" size="10">
+          <input type="number" name="numero" value="0" size="10">
         </div>
         
         <label for="responsable"><b>Responsable:</b></label>
@@ -113,7 +113,7 @@ include_once('../../Back/graficos/GraficasTime.php');
            <br> <br>
           <input type="text" name="usuario" value="<?php print ($_SESSION['nomina']);?>" style="display: none;">
           <input type="text" name="B" value="<?php if($_GET!=null){print $_GET['B'];}else{print "0";}?>" style="display: none;">
-          <input type="text" name="usuario" value="<?php if($_GET!=null){print $_GET['id'];}?>" style="display: none;">
+          <input type="text" name="id" value="<?php if($_GET!=null){print $_GET['id'];}?>" style="display: none;">
            <button style="position: relative; left: 200px; top: 3px;" type="submit" class="btn btn-primary" name=""><i class="fas fa-save"></i> Guardar</button>
            <br><br>
         </div>

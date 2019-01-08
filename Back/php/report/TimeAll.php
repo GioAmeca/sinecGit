@@ -29,7 +29,9 @@ $objphpleer= PHPExcel_IOFactory::createReader('Excel2007');
 $objphpExcel=$objphpleer->load('RquiAll.xlsx');
 $objphpExcel->setActiveSheetIndex(0);
 
-
+date_default_timezone_set('UTC');
+$hoy=date('Y-m-d');
+$objphpExcel->getActiveSheet()->SetCellValue('F3','Date Generated: '.$hoy);
 
   $linea=6;
 foreach ($r as $key) {
@@ -50,6 +52,7 @@ foreach ($r as $key) {
 	$objphpExcel->getActiveSheet()->SetCellValue('F'.$linea,$key[6]);
 	$objphpExcel->getActiveSheet()->SetCellValue('G'.$linea,$key[10]);
 	$objphpExcel->getActiveSheet()->SetCellValue('H'.$linea,$key[4]);
+	$objphpExcel->getActiveSheet()->SetCellValue('I'.$linea,$key[12]);
 	$objphpExcel->getActiveSheet()->SetCellValue('K'.$linea,$key[7]);
 	$objphpExcel->getActiveSheet()->SetCellValue('L'.$linea,$key[8]);
 	$objphpExcel->getActiveSheet()->SetCellValue('M'.$linea,$key[9]);
