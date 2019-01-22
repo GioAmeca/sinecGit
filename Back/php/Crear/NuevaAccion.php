@@ -1,4 +1,4 @@
-<?php 
+<?php  
 /*@Geovanny salazar
 clase que recibe los datos de open action y los registra en la basde de  datos 
 */

@@ -33,10 +33,10 @@ $modifica->bindParam(':FechaModificado',$fechaB);
 $modifica->bindParam(':id',$_POST['id']);
 
 $modifica->execute();
-$ruta="Location:../../../Front/areas/Time.php?msg=BienEditada&id=".$_POST['id']."#ancla1";
+$ruta="Location:../../../Front/areas/Time.php?B=0&msg=BienEditada&id=".$_POST['id']."#ancla1";
 } catch (Exception $e) {
 	print "error al actualizar";
-	$ruta="Location:../../../Front/areas/Time.php?msg=MalEditada&id=".$_POST['id']."#ancla1";
+	$ruta="Location:../../../Front/areas/Time.php?B=0&msg=MalEditada&id=".$_POST['id']."#ancla1";
 }
 header($ruta);
 ?>

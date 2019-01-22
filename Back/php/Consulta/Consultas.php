@@ -1,8 +1,6 @@
  <?php 
 
-   if ($_SESSION['activa']!='yes') {
-      header('Location:../../index.php');
-   }
+   
  $Con='0';
  if ($_GET!=null) {
    $Con=$_GET['Con'];
@@ -75,13 +73,13 @@
   
  }
 //funcion que hace la consulta de una sola accion  -esta funcion esta repetida en la clase de rapido.php-
- function ConsultaUnAccion($conexion){
+ function ConsultaUnAccion($con){
  	$setencia1=null;
  	if ($_GET!=null) {
  		$id=$_GET['Ide'];
         try {
         	$sql="SELECT * FROM produccion.acciones where IdAcciones =".$id.";";
-         	$setencia1=$conexion->query($sql);
+         	$setencia1=$con->query($sql);
          } catch (Exception $e) {
          	print 'Error al consultar registro individual id:'.$id;
          }
@@ -89,6 +87,7 @@
  	
          return $setencia1; 
 
-  }     
+  }
 
+ 
  ?>

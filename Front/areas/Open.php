@@ -1,7 +1,7 @@
  <?php 
    session_start();
    if ($_SESSION['activa']!='yes') {
-      header('Location:../../index.php');
+      header('Location:../../login.php');
    }
  ?>
 <!DOCTYPE html>

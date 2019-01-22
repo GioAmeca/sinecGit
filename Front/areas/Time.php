@@ -1,7 +1,7 @@
 <?php
 session_start(); 
 if ($_SESSION['activa']!='yes') {
-	header('Location:../../index.php');
+	header('Location:../../login.php');
 }
 include_once('../../Back/php/Tablas/TablaTiempos.php');
 include_once('../../Back/php/Conexion.php');

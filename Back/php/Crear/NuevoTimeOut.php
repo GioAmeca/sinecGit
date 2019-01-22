@@ -7,7 +7,7 @@ session_start();
 clase que tiene la funcion de registar en la base de datos un nuevo reporte de tiempos caidos 
 
 */
-date_default_timezone_set('America/Mexico_City');
+date_default_timezone_set('America/Mexico_City'); 
 $hoy=date('Y-m-d');
 $hora=date('H:i:s');
 $hora1 = date_create($_GET['inicio']);
@@ -25,7 +25,7 @@ if ($_GET['intermitente']=='1') {
 
 require_once('../Conexion.php');
  try { 
- 	$crear=$conexion->prepare("INSERT INTO `produccion`.`tiempomuertos` (`Proyecto`, `Linea`, `Equipo`, `Area`, `Turno`, `Fecha`, `Reportado`, `Iniciado`, `Fin`, `Minutos`, `Intermitente`, `Problema`, `Causa`, `AccionCorectiva`, `Comentario`, `Partes`, `NumeroParte`, `Reportante`, `Regitrado`, `Responsable`) VALUES (:Proyecto,:Linea,:Equipo,:Area,:Turno,:Fecha,:Reportado,:Iniciado,:Fin,:Minutos,:Intermitente,:Problema,:Causa,:AccionCorectiva,:Comentario,:Partes,:NumeroParte,:Reportante,:Regitrado,:Responsable);");
+ 	$crear=$conexion->prepare("INSERT INTO `produccion`.`tiempomuertos` (`Proyecto`, `Linea`, `Equipo`, `Area`, `Turno`, `Fecha`, `Reportado`, `Iniciado`, `Fin`, `Minutos`, `Intermitente`, `Problema`, `Causa`, `AccionCorectiva`, `Comentario`, `Partes`, `NumeroParte`, `Reportante`, `Regitrado`, `Responsable`) VALUES (:Proyecto,:Linea,:Equipo,:Area,:Turno,:Fecha,:Reportado,:Iniciado,:Fin,:Minutos,:Intermitente,:Problema,:Causa,:AccionCorectiva,:Comentario,:Partes,:NumeroParte,:Reportante,:Regitrado,:Responsable);"); 
  	
  	$crear->bindParam(':Proyecto',$_GET['Proyecto']);
  	$crear->bindParam(':Linea',$_GET['Linea']); 
@@ -48,7 +48,7 @@ require_once('../Conexion.php');
  	$crear->bindParam(':Regitrado',$hoy); 
  	$crear->bindParam(':Responsable',$_GET['responsable']);
     $crear->execute();
-   //header("Location:../../../Front/areas/Time.php?msg=TimeSave&id=".$_GET['id']."&B=".$_GET['B']);
+   header("Location:../../../Front/areas/Time.php?msg=TimeSave&id=".$_GET['id']."&B=".$_GET['B']);
  } catch (Exception $e) {
  	print 'Error al registar Tiempo caido'.$e;
  	header("Location:../../../Front/areas/Time.php?msg=TimeSaveError&id=".$_GET['id']."&B=".$_GET['B']);

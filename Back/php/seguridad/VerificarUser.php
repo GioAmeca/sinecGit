@@ -8,28 +8,31 @@ try {
 	//print $sql;
 $resultado=$conexion -> query($sql);
 foreach ($resultado as $key ) {
-	$id=$key[0];
-	$nomina=$key[1];
-	$cont=$key[2];
-	$dep=$key[3];
-	$nombre=$key[4];
-	$apellido=$key[5];
+	$id           =$key[0];
+	$nomina       =$key[1];
+	$cont         =$key[2];
+	
+	$nombre       =$key[4];
+	$apellido     =$key[5];
+	$departamento =$key[3];
 	
 	}
 } catch (Exception $e) {
-	header('Location:../../../index.php?msg=ErrorAlconsultar');
+	//header('Location:../../../login.php?msg=ErrorAlconsultar');
 }
+//print $user.$nomina;
 if ($user==$nomina and $pass==$cont) {
 	session_start();
-	$_SESSION['activa']='yes';
-	$_SESSION['nomina']=$nomina;
-	$_SESSION['nombre']=$nombre;
-	$_SESSION['Apellido']=$apellido;
+	$_SESSION['activa']       ='yes';
+	$_SESSION['nomina']       =$nomina;
+	$_SESSION['nombre']       =$nombre;
+	$_SESSION['Apellido']     =$apellido;
+	$_SESSION['Departamento'] =$departamento;
 	print 'bien';
 	header('Location:../../../Front/Data.php?'.$nomina);
 }else{
     print 'mal';
-	header('Location:../../../index.php?msg=datosMal');
+	header('Location:../../../login.php?msg=datosMal');
 }
 
 

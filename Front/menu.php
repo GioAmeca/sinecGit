@@ -1,6 +1,4 @@
-<?php  
-//print '
-?>
+
 <!--@html
     Codigo para generar la una barra de navegacion 
     Requiere de: $Icon  tiene el nombre del icon de awesome a utilizar
@@ -30,10 +28,14 @@
              </div>                            
             </div>
             <div style="position: absolute;top: 9px; right: 40%;">
+               <?php 
+                 
+                    if ($Titulo!='false') {
+                ?>
                <label class="d-none d-sm-block">
                    <p class="Etiqueta-Menu"><i class="fas fa-user-tie"><b ><?php print $Titulo;?></b> </i></p>
                </label>         
-                       
+                   <?php } ?>    
                <div uk-dropdown>
                   <ul class="uk-nav uk-dropdown-nav">
                       <li class="uk-active">
@@ -77,7 +79,8 @@
             <a href="" class="menuLargo" style="color:#fff; position: absolute; right: 30px;" ><li> <i class="fas fa-times"></i></li ></a> <br><br>
             <a <?php print'href="'.$carpeta.'Open.php"';?> ><li class="menuCorto">  <i class="fas fa-clipboard-check fa-"></i><label class="menuLargo">  &nbsp;  &nbsp; Open Action</label></li ></a> <br>
             <!--<i class="fas fa-clipboard-check fa-"></i>-->
-             <a <?php print 'href="'.$carpeta.'Time.php"';?>><li class="menuCorto"><i class="far fa-clock fa-"></i><label class="menuLargo">  &nbsp;  &nbsp; Time-Out</label></li ></a><br>
+            <a <?php print 'href="'.$carpeta.'Time.php"';?>><li class="menuCorto"><i class="far fa-clock fa-"></i><label class="menuLargo">  &nbsp;  &nbsp; Time-Out</label></li ></a><br>
+            <a <?php print 'href="'.$carpeta.'Msd/Msd.php"';?>><li class="menuCorto"><i class="fas fa-umbrella"></i><label class="menuLargo">  &nbsp;  &nbsp; MSD</label></li ></a><br>
            
    </ul> 
  </div></div>

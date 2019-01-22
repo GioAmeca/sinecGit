@@ -1,8 +1,6 @@
 <?php 
    
-   if ($_SESSION['activa']!='yes') {
-      header('Location:../../index.php');
-   }
+
 //funcion caduco. esta funcion recibe el id de una accion y verifica si esta accion esta vencida 
 function caduco($cone,$id){                 
   try {
@@ -38,6 +36,7 @@ function who($cone){
 
  //funcion que trae el numero de nomina, nombre y apellido de los usuaraio para mostrar 
 function whoCon($cone,$ide){ 
+  $datos="--";
    try {
    	$sql="SELECT NumeroNomina, Nombre, Apellido FROM produccion.usuario where NumeroNomina ='".$ide."';";
    	$conUserID=$cone->query($sql);
@@ -67,6 +66,16 @@ function correoUser($cone,$ide){
    return($correo);
  }
 
+  //funcion que trae la lista de material registrado 
+ function ComponentesRegistrados($cone){
+  try {
+    $sql=("SELECT idParte FROM produccion.parte;");
+    $conComponente=$cone->query($sql);
+  } catch (Exception $e) {
+    echo "Error al consultar los componentes".$e->GetMessage();
+  }
+  return ($conComponente);
+ }
 
  
  ?>

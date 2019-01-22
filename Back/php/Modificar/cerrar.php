@@ -11,7 +11,7 @@ if ($_POST['quien']==$_POST['quienc']) {
 	//print'si se puede';
 
 
-	try {
+	try { 
 	$sql="UPDATE `produccion`.`acciones` SET `Closed` = '".$hoy."', `Estatus` = '3' WHERE `idAcciones` = ". $_POST['id'].";";
 	
 

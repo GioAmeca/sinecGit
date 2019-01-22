@@ -19,13 +19,13 @@ catch (Exception $e) {
 }
 // si es bandera es 1 indica que el usuario esta activado si es 0 indica que no esta activado 
 if($bandera=='1'){
-    header('Location:../../../index.php?msg=yaRegitrado');
+    header('Location:../../../login.php?msg=yaRegitrado');
 }
-else{
+else{ 
 	$usuario=null;
      //consulto que el usuario exista en recursos humanos 
      try {
-     	
+     	 
 	     $usuario=$conexion->query($sql);
      } 
      catch (Exception $e) {
@@ -58,7 +58,7 @@ else{
   	     header('Location:../../../Front/adm/NewPass.php?msg=registrado');
      }
      else{
-      header('Location:../../../index.php?msg=noregistrado');
+     header('Location:../../../login.php?msg=noregistrado');
      } 
  }
 ?>

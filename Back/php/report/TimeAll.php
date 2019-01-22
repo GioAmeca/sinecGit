@@ -14,6 +14,7 @@ else{
 $sql='SELECT * FROM produccion.tiempomuertos where Fecha between '.$_GET['from'].' and '.$_GET['to'].' and turno='.$t.' or turno='.$tu.' or turno='.$tur.' ;';
 $usuario='root';
 $contraseña='root';
+//print $sql;
 try {
 	$conexion = new PDO('mysql:host=127.0.0.1;dbname=produccion', $usuario, $contraseña);
 	$r=$conexion->query($sql);

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<!--meta tags-->
     <meta charset="utf-8">
@@ -18,22 +19,22 @@
 	<title>Menu</title>
 </head>
 <body >
-  <div uk-scrollspy="cls: uk-animation-kenburns; repeat: true" style="background-color:#dcdcdc;position: absolute; width: 100%; height: 100%;  "> 
+  <div uk-scrollspy="cls: uk-animation-kenburns; repeat: true" style="background-color:#dcdcdc;position: absolute; width: 100%; height: 100%;  ">
   </div>
   <div class="Menu">
         <nav class="uk-navbar-container" uk-navbar style="background-color: #3c8dbc; height: 50px;" >
             <div style="position: absolute;top: 5px; left: 10px;">
-                
-                
+
+
                <label class="Logo-Blanco">
                   <img src="img/sinec-white.svg" width="130">
                </label>
-                                       
+
             </div>
             <div style="position: absolute;top: 9px; right: 10px;">
                <a href="construccion.php"><label class="Etiqueta-Menu">
                    <i class="fas fa-desktop"><b style="font-family: 'Raleway', sans-serif;"> It Crowd</b> </i>
-               </label></a>                        
+               </label></a>
             </div>
         </nav>
   </div>
@@ -45,7 +46,7 @@
                <div style="text-align: center; padding-top: 10px;">
                   <i class="fas fa-clipboard-list fa-5x"></i> <br>
                   <b>Open Action</b>
-               </div> 
+               </div>
             </div>
          </a>
       </div>
@@ -60,10 +61,10 @@
          </a>
       </div>
       <div class="uk-card uk-margin-left" uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
-         <a href="areas/Time.php" class="menuData" style=" text-decoration: none;">
+         <a href="areas/Msd/Msd.php" class="menuData" style=" text-decoration: none;">
             <div class="DataMenu">
                 <div style="text-align: center; padding-top: 10px;">
-                  <i class="fas fa-umbrella fa-5x"></i></i> <br>
+                  <i class="fas fa-umbrella fa-5x"></i> <br>
                   <b>MSD</b>
                 </div>
             </div>
@@ -78,7 +79,7 @@
       <br>
       <a href="https://www.tecnm.mx/" class="pie"><img src="img/TecNM.png" width="70"></a>
       <a href="http://www.tecmm.edu.mx/"class="pie"><img src="img/TecMM.png" width="70"></a>
-    </div> 
+    </div>
     </div>
 <!--Boostrap js-->
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
